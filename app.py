@@ -675,16 +675,18 @@ def main() -> None:
                     )
                     st.plotly_chart(fig_foreign)
 
-                # 4. Таблица с аналитикой
+                # Таблица с подсветкой
                 def highlight_expiry(row):
-                    if pd.notna(row['Продление']) and row['Продление'] <= critical_date:
+                    # Берем настоящую дату из оригинального датафрейма df_ip для математического сравнения
+                    original_date = df_ip.loc[row.name, 'Продление']
+                    
+                    if pd.notna(original_date) and original_date <= critical_date:
                         return ['background-color: #ffcccc'] * len(row)
                     return [''] * len(row)
 
                 st.write("Реестр товарных знаков:")
                 
                 df_display = df_ip.copy()
-                # Форматируем даты для удобства юристов
                 df_display['Продление'] = df_display['Продление'].dt.strftime('%d.%m.%Y')
                 df_display['Дата приоритета'] = pd.to_datetime(df_display['Дата приоритета']).dt.strftime('%d.%m.%Y')
                 
