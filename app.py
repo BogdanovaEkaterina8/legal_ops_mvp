@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 REQUIRED_COLUMNS = [
