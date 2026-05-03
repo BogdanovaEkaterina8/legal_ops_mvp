@@ -390,7 +390,7 @@ def main() -> None:
                 st.success("Спасибо за вашу оценку!")
 
     with tab_goals:
-        st.markdown("#### Action Plan на квартал")
+        st.markdown("#### План действий на квартал")
 
         contracts_df: pd.DataFrame | None = None
         try:
