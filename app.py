@@ -551,14 +551,6 @@ def main() -> None:
                 )
 
         st.markdown("### OKR (Objectives & Key Results)")
-        # Временная диагностика — потом можно будет удалить
-        st.subheader("Проверка готовности данных")
-        cols = st.columns(5)
-        cols[0].metric("Скорость", "ОК" if has_speed else "Нет данных")
-        cols[1].metric("NPS (Отзывы)", "ОК" if has_nps else "Пусто")
-        cols[2].metric("Риски", "ОК" if has_risk else "Нет данных")
-        cols[3].metric("Автопилот", "ОК" if has_automation else "Нет данных")
-        cols[4].metric("Баланс", "ОК" if has_balance else "Нет данных")
         if not can_compute_goals:
             st.warning("Недостаточно данных для расчета целей")
         else:
